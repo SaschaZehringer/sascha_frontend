@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "skills": "Fähigkeiten",
+    "contact": "Kontakt"
+  },
+  "sections": {
+    "summary": "Über mich",
+    "skills": "Fähigkeiten",
+    "experience": "Berufserfahrung",
+    "projects": "Projekte",
+    "education": "Bildung"
+  },
+  "skills": {
+    "private": "Privat",
+    "academic": "Akademisch",
+    "professional": "Beruflich",
+    "level": "Level",
+    "projectsUsing": "Projekte mit {{skillName}}"
+  },
+  "contact": {
+    "emails": "E-Mails",
+    "country": "Land",
+    "city": "Stadt",
+    "websites": "Webseiten"
+  },
+  "common": {
+    "goTo": "{{name}} aufrufen",
+    "at": "bei"
+  },
+  "aria": {
+    "profilePhoto": "Profilfoto",
+    "logo": "Logo",
+    "toggleNav": "Navigation umschalten",
+    "switchToDark": "Zum Dunkelen Modus wechseln",
+    "switchToLight": "Zum Hellen Modus wechseln"
+  }
+}

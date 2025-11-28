@@ -1,0 +1,27 @@
+### STAGE 1: Build ###
+FROM docker.io/library/node:lts-alpine AS builder
+
+ARG ENVIRONMENT=production
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+RUN npm ci
+
+COPY . .
+
+RUN npm run build -- --configuration=${ENVIRONMENT}
+
+### STAGE 2: Run ###
+FROM docker.io/library/nginx:alpine
+
+COPY conf/nginx.conf /etc/nginx/nginx.conf
+COPY --from=builder /app/dist/sascha_frontend/browser /usr/share/nginx/html
+
+USER root
+
+RUN apk add --update \
+  curl \
+  iproute2-ss \
+  && rm -rf /var/cache/apk/*

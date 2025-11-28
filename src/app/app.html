@@ -1,0 +1,178 @@
+<navbar></navbar>
+<!-- <app-login></app-login> -->
+
+<div class="cv-container">
+  <header class="cv-header">
+    <table class="cv-header-table">
+      <tbody>
+        <tr>
+          <td>
+            <div *ngIf="personalInfo">
+              <h1>{{ personalInfo.firstName }} {{ personalInfo.lastName }}</h1>
+              <h2>{{ personalInfo.jobTitle }}</h2>
+              <div *ngIf="personalInfo.contact" class="contact-info">
+                <p><strong>{{ 'contact.country' | translate }}:</strong> {{ personalInfo.contact.country }}</p>
+                <p><strong>{{ 'contact.city' | translate }}:</strong> {{ personalInfo.contact.city }}</p>
+              </div>
+              <div *ngIf="personalInfo.contact" class="contact-info">
+                <p>
+                  <strong>{{ 'contact.emails' | translate }}:</strong>
+                </p>
+                <ul *ngIf="personalInfo.contact.emails">
+                  <li *ngFor="let email of personalInfo.contact.emails">
+                    <a href="mailto:{{ email.email }}">{{ email.email }}</a>
+                  </li>
+                </ul>
+                <p>
+                  <strong>{{ 'contact.websites' | translate }}: </strong>
+                </p>
+                <ul>
+                  <li *ngFor="let website of personalInfo.contact.websites">
+                    <a href="https://{{ website.website }}" target="_blank">{{ website.website }}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </td>
+          <td>
+            <img src="pictures/profile.png" [attr.alt]="'aria.profilePhoto' | translate" class="profile-photo" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </header>
+
+  <section *ngIf="personalInfo.summary" class="cv-summary">
+    <h2>{{ 'sections.summary' | translate }}</h2>
+    <div *ngFor="let summary of personalInfo.summary">
+      <ng-container *ngIf="summary.entry; else lineBreak">
+        <p>{{ summary.entry }}</p>
+      </ng-container>
+      <ng-template #lineBreak><br /></ng-template>
+    </div>
+  </section>
+
+  <section *ngIf="privateSkills || academicSkills || professionallySkills" class="cv-skills">
+    <h2>{{ 'sections.skills' | translate }}</h2>
+    <div class="skills-container">
+      <table class="skills-table">
+        <thead>
+          <tr>
+            <th>{{ 'skills.private' | translate }}</th>
+            <th>{{ 'skills.academic' | translate }}</th>
+            <th>{{ 'skills.professional' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div *ngFor="let privateSkill of privateSkills" class="skill-card">
+                <h4>{{ privateSkill.name }}</h4>
+                <div class="skill-level">{{ 'skills.level' | translate }}: {{ privateSkill.skillLevel }} / 10</div>
+                <div class="skill-experience">
+                  {{ privateSkill.experienceDuration }} {{ privateSkill.experienceTimeUnit }}
+                </div>
+                <div *ngIf="this.hasSkillProjects(privateSkill)" class="skill-card-projects">
+                  <h4>{{ 'skills.projectsUsing' | translate:{ skillName: privateSkill.name } }}</h4>
+                  <ul class="no-bullets">
+                    <li *ngFor="let project of privateSkill.skillProject">
+                      <a [href]="project.project.link" target="_blank">
+                        {{ project.project.name }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div *ngFor="let academicSkill of academicSkills" class="skill-card">
+                <h4>{{ academicSkill.name }}</h4>
+                <p class="skill-level">{{ 'skills.level' | translate }}: {{ academicSkill.skillLevel }} / 10</p>
+                <p class="skill-experience">
+                  {{ academicSkill.experienceDuration }} {{ academicSkill.experienceTimeUnit }}
+                </p>
+                <div *ngIf="this.hasSkillProjects(academicSkill)" class="skill-card-projects">
+                  <h4>{{ 'skills.projectsUsing' | translate:{ skillName: academicSkill.name } }}</h4>
+                  <ul class="no-bullets">
+                    <li *ngFor="let project of academicSkill.skillProject">
+                      <a [href]="project.project.link" target="_blank">
+                        {{ project.project.name }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div *ngFor="let professionallySkill of professionallySkills" class="skill-card">
+                <h4>{{ professionallySkill.name }}</h4>
+                <p class="skill-level">{{ 'skills.level' | translate }}: {{ professionallySkill.skillLevel }} / 10</p>
+                <p class="skill-experience">
+                  {{ professionallySkill.experienceDuration }} {{ professionallySkill.experienceTimeUnit }}
+                </p>
+                <div *ngIf="this.hasSkillProjects(professionallySkill)" class="skill-card-projects">
+                  <h4>{{ 'skills.projectsUsing' | translate:{ skillName: professionallySkill.name } }}</h4>
+                  <ul class="no-bullets">
+                    <li *ngFor="let project of professionallySkill.skillProject">
+                      <a [href]="project.project.link" target="_blank">
+                        {{ project.project.name }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="cv-experience">
+    <h2>{{ 'sections.experience' | translate }}</h2>
+    <ul class="no-bullets">
+      <li *ngFor="let job of experiences">
+        <span class="cv-period">
+          [{{job.periodBegin.getFullYear() }}-{{job.periodBegin.getMonth().toString().padStart(2, '0') }}
+          - {{ job.periodEnd.getFullYear() }}-{{job.periodEnd.getMonth().toString().padStart(2, '0') }}]
+        </span>
+        <span class="cv-titel">
+          {{ job.role }} {{ 'common.at' | translate }} {{ job.company }}
+        </span>
+        <span class="cv-text">
+          {{ job.description }}
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="cv-projects">
+    <h2>{{ 'sections.projects' | translate }}</h2>
+    <ul class="no-bullets">
+      <li *ngFor="let project of projects">
+        <strong>{{ project.name }}</strong>: {{ project.description }}
+        <span *ngIf="project.link">
+          [<a href="{{ project.link }}" target="_blank">{{ 'common.goTo' | translate:{ name: project.name } }}</a>]
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="cv-education">
+    <h2>{{ 'sections.education' | translate }}</h2>
+    <ul class="no-bullets">
+      <li *ngFor="let edu of educations">
+        <span class="cv-period">
+          [{{edu.periodBegin.getFullYear() }}-{{edu.periodBegin.getMonth().toString().padStart(2, '0') }}
+          - {{ edu.periodEnd.getFullYear() }}-{{edu.periodEnd.getMonth().toString().padStart(2, '0') }}]
+        </span>
+        <span class="cv-titel">
+          {{ edu.degreeType }}, {{ edu.degree }}
+        </span>
+        <span class="cv-text">
+          at {{ edu.institution }} in {{ edu.institutionLocation }}
+        </span>
+      </li>
+    </ul>
+  </section>
+</div>

@@ -1,0 +1,38 @@
+<nav class="navbar">
+  <!-- <div
+    class="burger"
+    (click)="toggleMenu()"
+    (keydown.enter)="toggleMenu()"
+    (keydown.space)="toggleMenu()"
+    [class.open]="menuOpen"
+    [attr.aria-label]="'aria.toggleNav' | translate"
+    tabindex="0"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </div> -->
+  <a href="https://zehringer.net" target="_blank">
+    <img src="pictures/logo_slim.png" [attr.alt]="'aria.logo' | translate" class="navbar-logo" />
+  </a>
+  <ul class="nav-links" [class.open]="menuOpen">
+    <li><a href="/">{{ 'nav.home' | translate }}</a></li>
+    <li><a href="/skills">{{ 'nav.skills' | translate }}</a></li>
+    <li><a href="/contact">{{ 'nav.contact' | translate }}</a></li>
+  </ul>
+  <button
+    class="language-toggle"
+    (click)="toggleLanguage()"
+    [attr.aria-label]="'aria.switchToLight' | translate"
+  >
+    <span>{{this.language}}</span>
+  </button>
+  <button
+    class="theme-toggle"
+    (click)="toggleTheme()"
+    [attr.aria-label]="isLightMode ? ('aria.switchToDark' | translate) : ('aria.switchToLight' | translate)"
+  >
+    <span *ngIf="isLightMode">🌙</span>
+    <span *ngIf="!isLightMode">☀️</span>
+  </button>
+</nav>

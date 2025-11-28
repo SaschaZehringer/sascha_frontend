@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Home",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "sections": {
+    "summary": "About me",
+    "skills": "Skills",
+    "experience": "Experience",
+    "projects": "Projects",
+    "education": "Education"
+  },
+  "skills": {
+    "private": "Private",
+    "academic": "Academic",
+    "professional": "Professional",
+    "level": "Level",
+    "projectsUsing": "Projects using {{skillName}}"
+  },
+  "contact": {
+    "emails": "Emails",
+    "country": "Country",
+    "city": "City",
+    "websites": "Websites"
+  },
+  "common": {
+    "goTo": "Go to {{name}}",
+    "at": "at"
+  },
+  "aria": {
+    "profilePhoto": "Profile Photo",
+    "logo": "Logo",
+    "toggleNav": "Toggle navigation",
+    "switchToDark": "Switch to dark mode",
+    "switchToLight": "Switch to light mode"
+  }
+}

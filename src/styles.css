@@ -1,0 +1,67 @@
+/* Global color palette */
+:root {
+  /* Dark mode (default) */
+  --color-bg-light: #222831;
+  --color-bg-medium: #393E46;
+  --color-bg-medium-light: #4c525c;
+  --color-bg-medium-dark: #181b20;
+  --color-bg-navbar-light: #1d696d;
+  --color-bg-navbar: #00ADB5;
+  --color-bg-navbar-dark: rgb(20, 166, 173);
+  --color-accent: #EEEEEE;
+  --color-dark: #00ADB5;
+  --color-dark-navbar: #1d2a2b;
+  --color-light: #bfe5e7;
+}
+
+/* Light mode overrides */
+.light-mode {
+  --color-bg-light: #F0F5F9;
+  --color-bg-medium: #c5b6a4;
+  --color-bg-medium-light: #ebe5dd;
+  --color-bg-medium-dark: #9b8b77;
+  --color-bg-navbar-light: #817840;
+  --color-bg-navbar: #685f2f;
+  --color-bg-navbar-dark: #463f1c;
+  --color-accent: #133b1b;
+  --color-dark: #223025;
+  --color-dark-navbar: #223025;
+  --color-light: #EEEEEE;
+}
+
+body {
+  background: var(--color-bg-light);
+  color: var(--color-dark);
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-dark);
+  font-weight: 700;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--color-dark);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: var(--color-bg-medium);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 4px;
+}
