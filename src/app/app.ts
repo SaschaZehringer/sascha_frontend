@@ -68,7 +68,7 @@ export class App implements OnInit {
 
   ngOnInit(): void {
     // Subscribe to language changes and reload data when language changes
-    this.languageService.language$.subscribe(language => {
+    this.languageService.language$.subscribe((language) => {
       this.language = language;
       this.loadAll();
     });
@@ -183,8 +183,11 @@ export class App implements OnInit {
             id: o.id || 0,
             name: o.name || '',
             description: o.description || '',
-            link: o.link || '',
+            projectLinks: o.projectLinks || [],
           };
+
+          console.log(o);
+          console.log(project);
 
           this.projects.push(project);
         });
@@ -224,5 +227,15 @@ export class App implements OnInit {
 
   protected hasSkillProjects(skill: ISkill): boolean {
     return skill.skillProject.some((o) => o.project);
+  }
+
+  protected getDomain(link: string): string {
+    try {
+      const parsed = new URL(link);
+      return parsed.hostname;
+    } catch (e) {
+      console.error('Ungültige URL:', e);
+      return "";
+    }
   }
 }

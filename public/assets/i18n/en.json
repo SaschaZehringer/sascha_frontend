@@ -9,6 +9,7 @@
     "skills": "Skills",
     "experience": "Experience",
     "projects": "Projects",
+    "projectsLinks": "Project Links",
     "education": "Education"
   },
   "skills": {
@@ -26,7 +27,8 @@
   },
   "common": {
     "goTo": "Go to {{name}}",
-    "at": "at"
+    "at": "at",
+    "on": "on"
   },
   "aria": {
     "profilePhoto": "Profile Photo",

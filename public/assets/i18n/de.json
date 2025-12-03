@@ -9,6 +9,7 @@
     "skills": "Fähigkeiten",
     "experience": "Berufserfahrung",
     "projects": "Projekte",
+    "projectsLinks": "Projekt Links",
     "education": "Bildung"
   },
   "skills": {
@@ -26,7 +27,8 @@
   },
   "common": {
     "goTo": "{{name}} aufrufen",
-    "at": "bei"
+    "at": "bei",
+    "on": "auf"
   },
   "aria": {
     "profilePhoto": "Profilfoto",

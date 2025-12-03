@@ -76,9 +76,13 @@
                   <h4>{{ 'skills.projectsUsing' | translate:{ skillName: privateSkill.name } }}</h4>
                   <ul class="no-bullets">
                     <li *ngFor="let project of privateSkill.skillProject">
-                      <a [href]="project.project.link" target="_blank">
-                        {{ project.project.name }}
-                      </a>
+                      <ul class="no-bullets">
+                        <li *ngFor="let link of project.project.projectLinks">
+                          <a [href]="link.link" target="_blank">
+                            {{ project.project.name }} {{ 'common.on' | translate }} {{ this.getDomain(link.link) }}
+                          </a>
+                        </li>
+                      </ul>
                     </li>
                   </ul>
                 </div>
@@ -95,9 +99,13 @@
                   <h4>{{ 'skills.projectsUsing' | translate:{ skillName: academicSkill.name } }}</h4>
                   <ul class="no-bullets">
                     <li *ngFor="let project of academicSkill.skillProject">
-                      <a [href]="project.project.link" target="_blank">
-                        {{ project.project.name }}
-                      </a>
+                      <ul class="no-bullets">
+                        <li *ngFor="let link of project.project.projectLinks">
+                          <a [href]="link.link" target="_blank">
+                            {{ project.project.name }} {{ 'common.on' | translate }} {{ this.getDomain(link.link) }}
+                          </a>
+                        </li>
+                      </ul>
                     </li>
                   </ul>
                 </div>
@@ -114,9 +122,13 @@
                   <h4>{{ 'skills.projectsUsing' | translate:{ skillName: professionallySkill.name } }}</h4>
                   <ul class="no-bullets">
                     <li *ngFor="let project of professionallySkill.skillProject">
-                      <a [href]="project.project.link" target="_blank">
-                        {{ project.project.name }}
-                      </a>
+                      <ul class="no-bullets">
+                        <li *ngFor="let link of project.project.projectLinks">
+                          <a [href]="link.link" target="_blank">
+                            {{ project.project.name }} {{ 'common.on' | translate }} {{ this.getDomain(link.link) }}
+                          </a>
+                        </li>
+                      </ul>
                     </li>
                   </ul>
                 </div>
@@ -151,8 +163,15 @@
     <ul class="no-bullets">
       <li *ngFor="let project of projects">
         <strong>{{ project.name }}</strong>: {{ project.description }}
-        <span *ngIf="project.link">
-          [<a href="{{ project.link }}" target="_blank">{{ 'common.goTo' | translate:{ name: project.name } }}</a>]
+        <span *ngIf="project.projectLinks">
+        <!-- <h4>{{ 'sections.projectsLinks' | translate }}</h4> -->
+          <ul class="no-bullets">
+            <li *ngFor="let link of project.projectLinks">
+              [<a href="{{ link.link }}" target="_blank">
+                {{ project.name }} {{ 'common.on' | translate }} {{ this.getDomain(link.link) }}
+              </a>]
+            </li>
+          </ul>
         </span>
       </li>
     </ul>
