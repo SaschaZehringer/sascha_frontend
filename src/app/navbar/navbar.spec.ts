@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { Navbar } from './navbar';
 
 describe('Navbar', () => {
@@ -7,7 +8,7 @@ describe('Navbar', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Navbar]
+      imports: [Navbar, TranslateModule.forRoot()]
     }).compileComponents();
 
     fixture = TestBed.createComponent(Navbar);
@@ -66,5 +67,11 @@ describe('Navbar', () => {
     component.setLightMode(false);
     expect(component.isLightMode).toBe(false);
     expect(body.classList.contains('light-mode')).toBe(false);
+  });
+
+  it('should call window.print() when printPage is called', () => {
+    const printSpy = spyOn(window, 'print');
+    component.printPage();
+    expect(printSpy).toHaveBeenCalledTimes(1);
   });
 });

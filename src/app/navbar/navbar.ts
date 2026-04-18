@@ -46,6 +46,10 @@ export class Navbar implements OnInit {
     localStorage.setItem('theme', this.isLightMode ? 'light' : 'dark');
   }
 
+  printPage(): void {
+    window.print();
+  }
+
   private updateBodyLanguageClass(): void {
     const body = document.body;
     body.classList.remove('language');
