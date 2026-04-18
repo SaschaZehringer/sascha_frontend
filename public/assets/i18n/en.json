@@ -35,6 +35,7 @@
     "logo": "Logo",
     "toggleNav": "Toggle navigation",
     "switchToDark": "Switch to dark mode",
-    "switchToLight": "Switch to light mode"
+    "switchToLight": "Switch to light mode",
+    "printCV": "Download CV as PDF"
   }
 }
