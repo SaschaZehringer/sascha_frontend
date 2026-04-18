@@ -16,9 +16,9 @@
     <img src="pictures/logo_slim.png" [attr.alt]="'aria.logo' | translate" class="navbar-logo" />
   </a>
   <ul class="nav-links" [class.open]="menuOpen">
-    <li><a href="/">{{ 'nav.home' | translate }}</a></li>
-    <li><a href="/skills">{{ 'nav.skills' | translate }}</a></li>
-    <li><a href="/contact">{{ 'nav.contact' | translate }}</a></li>
+    <!-- <li><a href="/">{{ 'nav.home' | translate }}</a></li> -->
+    <!-- <li><a href="/skills">{{ 'nav.skills' | translate }}</a></li>
+    <li><a href="/contact">{{ 'nav.contact' | translate }}</a></li> -->
   </ul>
   <button
     class="language-toggle"
@@ -26,6 +26,13 @@
     [attr.aria-label]="'aria.switchToLight' | translate"
   >
     <span>{{this.language}}</span>
+  </button>
+  <button
+    class="print-btn"
+    (click)="printPage()"
+    [attr.aria-label]="'aria.printCV' | translate"
+  >
+    <span>PDF</span>
   </button>
   <button
     class="theme-toggle"
