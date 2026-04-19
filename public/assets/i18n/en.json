@@ -36,6 +36,8 @@
     "toggleNav": "Toggle navigation",
     "switchToDark": "Switch to dark mode",
     "switchToLight": "Switch to light mode",
+    "switchToDE": "Switch to German",
+    "switchToEN": "Switch to English",
     "printCV": "Download CV as PDF"
   }
 }

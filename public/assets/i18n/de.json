@@ -36,6 +36,8 @@
     "toggleNav": "Navigation umschalten",
     "switchToDark": "Zum Dunkelen Modus wechseln",
     "switchToLight": "Zum Hellen Modus wechseln",
+    "switchToDE": "Zu Deutsch wechseln",
+    "switchToEN": "Zu Englisch wechseln",
     "printCV": "Lebenslauf als PDF herunterladen"
   }
 }

@@ -23,7 +23,7 @@
   <button
     class="language-toggle"
     (click)="toggleLanguage()"
-    [attr.aria-label]="'aria.switchToLight' | translate"
+    [attr.aria-label]="language === 'de' ? ('aria.switchToEN' | translate) : ('aria.switchToDE' | translate)"
   >
     <span>{{this.language}}</span>
   </button>
