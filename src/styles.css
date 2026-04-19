@@ -65,3 +65,87 @@ button, input, select, textarea {
   background: var(--color-accent);
   border-radius: 4px;
 }
+
+/* ─── Print / PDF ─────────────────────────────────────────────────────────── */
+
+@page {
+  size: A4;
+  margin: 15mm 15mm 15mm 15mm;
+}
+
+@media print {
+  :root,
+  body.light-mode {
+    --color-bg-light: #ffffff;
+    --color-bg-medium: #f5f5f5;
+    --color-bg-medium-light: #eeeeee;
+    --color-bg-medium-dark: #e0e0e0;
+    --color-bg-navbar: #00adb5;
+    --color-accent: #111111;
+    --color-dark: #222222;
+    --color-light: #ffffff;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    margin: 0;
+    padding: 0;
+    min-height: unset;
+  }
+
+  .cv-container {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: #ffffff !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .skills-container {
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  .skill-card {
+    background: #e8e8e8 !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .cv-experience li,
+  .cv-projects li,
+  .cv-education li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .cv-summary,
+  .cv-skills,
+  .cv-experience,
+  .cv-projects,
+  .cv-education {
+    break-before: auto;
+    orphans: 3;
+    widows: 3;
+  }
+
+  a {
+    color: #000000 !important;
+    text-decoration: underline;
+  }
+
+  .skills-table,
+  .skills-table th,
+  .skills-table td {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    background: #f5f5f5 !important;
+    border-color: #cccccc !important;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
