@@ -100,7 +100,11 @@ button, input, select, textarea {
     background: #ffffff !important;
     margin: 0 !important;
     max-width: 100% !important;
-    padding: 0 !important;
+    padding: 0 5mm !important;
+  }
+
+  .cv-header {
+    border-bottom-color: #cccccc !important;
   }
 
   .skills-container {
@@ -110,6 +114,8 @@ button, input, select, textarea {
 
   .skill-card {
     background: #e8e8e8 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
     break-inside: avoid;
     page-break-inside: avoid;
   }
