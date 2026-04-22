@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__plugin_mempalace_mempalace__mempalace_diary_write",
+      "mcp__plugin_mempalace_mempalace__mempalace_add_drawer",
+      "mcp__plugin_mempalace_mempalace__mempalace_kg_add",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(timeout 60 npm test)",
+      "Bash(timeout 90 npm test)",
+      "Bash(npx tsc *)",
+      "Bash(npx ng *)",
+      "Bash(cat)",
+      "Bash(npx ts-node *)",
+      "Bash(timeout 120 npm test)",
+      "Bash(npm test *)",
+      "Bash(npm run *)",
+      "Bash(podman login *)",
+      "Bash(podman push *)"
+    ]
+  }
+}

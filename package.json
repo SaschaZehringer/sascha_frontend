@@ -10,7 +10,16 @@
     "test": "ng test",
     "test:coverage": "ng test --code-coverage",
     "lint": "ng lint",
-    "start-debugable-brave": "/usr/bin/flatpak run com.brave.Browser --remote-debugging-port=9222 --user-data-dir=\"~/tmp\" http://localhost:4200"
+    "start-debugable-brave": "/usr/bin/flatpak run com.brave.Browser --remote-debugging-port=9222 --user-data-dir=\"~/tmp\" http://localhost:4200",
+    "build:testing": "podman image build --build-arg ENVIRONMENT=testing -t registry.zehringer.me/sascha_frontend:testing -f container/Containerfile .",
+    "build:staging": "podman image build --build-arg ENVIRONMENT=staging -t registry.zehringer.me/sascha_frontend:staging -f container/Containerfile .",
+    "build:production": "podman image build --build-arg ENVIRONMENT=production -t registry.zehringer.me/sascha_frontend:production -f container/Containerfile . && podman image build --build-arg ENVIRONMENT=production -t registry.zehringer.me/sascha_frontend:latest -f container/Containerfile .",
+    "push:testing": "podman push registry.zehringer.me/sascha_frontend:testing",
+    "push:staging": "podman push registry.zehringer.me/sascha_frontend:staging",
+    "push:production": "podman push registry.zehringer.me/sascha_frontend:production && podman push registry.zehringer.me/sascha_backend:latest",
+    "build-push:testing": "npm run build:testing && npm run push:testing",
+    "build-push:staging": "npm run build:staging && npm run push:staging",
+    "build-push:production": "npm run build:production && npm run push:production"
   },
   "engines": {
     "node": "22.x || 24.x"
